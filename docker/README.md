@@ -2,20 +2,24 @@
 
 ----
 
-## ✅Running docker with the python:3.12.8 image in an interactive mode, using the entrypoint bash.
+## Running docker with the python:3.12.8 image in an interactive mode, using the entrypoint bash.
 
-docker run -it --entrypoint=bash python:3.12.8
+docker run -it --entrypoint=bash python:3.12.8  
 to check the version run command  pip --version
 
 ## Docker networking and docker-compose
-In the Docker Compose.yaml file the two contsiners postgres and pg admin are connected through networking
-the port that hostname and port that pgAdmin should use to connect to Postgres is postgres:5432 postgres is the container name and 5432 is the internal port of the database container.
+In the `docker-compose.yaml` file, the two containers **Postgres** and **pgAdmin** are connected through a **Docker network**.
+The hostname and port that **pgAdmin** should use to connect to **Postgres** are:
+
+- **Hostname:** `postgres` (this is the name of the Postgres container)
+- **Port:** `5432` (this is the default Postgres port exposed internally in the container)
+
+Docker Compose creates a **default network** for all services defined in the same `docker-compose.yaml`, which allows them to refer to each other by **service name** as a hostname.
 
 ## Trip Segmentation Count
-How many trips occurred within different distance segments in October 2019?
+Trips occurring within different distance segments in October 2019?
 
-Query: 
-
+``` sql
 SELECT
   CASE
     WHEN trip_distance <= 1 THEN 'Up to 1 mile'
@@ -29,17 +33,21 @@ FROM green_taxi_trips
 WHERE lpep_pickup_datetime >= '2019-10-01' AND lpep_pickup_datetime < '2019-11-01'
 GROUP BY distance_levels
 ORDER BY trip_count DESC;
+```
 
-# Longest Trip Per Day
+## Longest Trip Per Day
 
+```sql
 SELECT lpep_pickup_datetime::date AS pickup_day, MAX(trip_distance) AS max_distance
 FROM green_taxi_trips
 GROUP BY pickup_day
 ORDER BY max_distance DESC
 LIMIT 1;
+```
 
-#Top Pickup Zones on 2019-10-18
+## Top Pickup Zones on 2019-10-18
 
+```sql
 SELECT tz."Zone", SUM(g.total_amount) AS total
 FROM green_taxi_trips g
 INNER JOIN taxi_zones tz ON tz."LocationID" = g."PULocationID"
@@ -47,7 +55,11 @@ WHERE g.lpep_pickup_datetime::date = '2019-10-18'
 GROUP BY tz."Zone"
 ORDER BY total DESC
 LIMIT 3;
-#Largest Tip for East Harlem North
+```
+
+## Largest Tip for East Harlem North
+
+```sql
 SELECT dropoffzone."Zone", g.tip_amount
 FROM green_taxi_trips g
 INNER JOIN taxi_zones pickupzone ON pickupzone."LocationID" = g."PULocationID"
@@ -57,10 +69,12 @@ WHERE g.lpep_pickup_datetime >= '2019-10-01'
   AND pickupzone."Zone" = 'East Harlem North'
 ORDER BY g.tip_amount DESC
 LIMIT 1;
+```
 
-#Terraform Workflow
- To prepare an environment by creating resources in GCP with Terraform.
- the sequence to : 
-Downloading the provider plugins and setting up backend  terraform init,  
-Generating proposed changes and auto-executing the plan ...terraform apply -auto-approve,
-Remove all resources managed by terraform` terraform destroy
+## Terraform Workflow
+To prepare an environment by creating resources in GCP with Terraform.  
+The sequence to:
+
+- Downloading the provider plugins and setting up backend: `terraform init`  
+- Generating proposed changes and auto-executing the plan: `terraform apply -auto-approve`  
+- Remove all resources managed by terraform: `terraform destroy`
