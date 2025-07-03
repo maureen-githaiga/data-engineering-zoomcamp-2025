@@ -62,5 +62,7 @@ This repository includes my weekly progress, assignments, and select workshops a
 - [`week_4/`](./analytics_engineering/) – Analytics Engineering with dbt
 - ...
 
+Learning notes for each week can be found in [this learning journal](https://marbled-saltopus-dd4.notion.site/Data-Engineering-Portfolio-Learning-Journey-224ef958039080e0b15dca56e031eb9f).
+
 
 
