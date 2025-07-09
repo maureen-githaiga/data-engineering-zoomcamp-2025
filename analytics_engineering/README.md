@@ -22,6 +22,9 @@ We process and model NYC Taxi trip data from 2019 and 2020, including:
 - FHV: 43,244,696 records
 
 Stored as BigQuery native tables.
+### Workflow
+![DBT Data Lineage](https://user-images.githubusercontent.com/4315804/148699280-964c4e0b-e685-4c0f-a266-4f3e097156c9.png)
+
 
 The following are answers to the homework questions:
 
@@ -106,7 +109,7 @@ Or rely on default value.
 
 ## 2. DBT Data Lineage and Execution
 
-![DBT Data Lineage](attachment:60c5fb03-608c-4ca6-9c1e-38280cf026f2\:homework_q2.png)
+![DBT Data Lineage](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/cohorts/2025/04-analytics-engineering/homework_q2.png)
 
 In the lineage above:
 
@@ -180,7 +183,13 @@ Computes quarterly revenue by year based on `total_amount`.
 
 ---
 
-### 4.2 Taxi Monthly Fare Percentiles: P97, P95, P90
+### 4.2 Taxi Monthly Fare Percentiles: P97, P95, P90 `fct_taxi_trips_monthly_fare_p95.sql`
+Computes the **continuous percentile** of `fare_amount` partitioned by `service_type`, `year`, and `month`.
+Filtering conditions:
+
+* `fare_amount > 0`
+* `trip_distance > 0`
+* `payment_type_description` in ('Cash', 'Credit card')
 
 | Taxi Type | P97  | P95  | P90  |
 | --------- | ---- | ---- | ---- |
@@ -189,14 +198,8 @@ Computes quarterly revenue by year based on `total_amount`.
 
 ---
 
-### 4.3 Model: `fct_taxi_trips_monthly_fare_p95.sql`
+### 4.3 Staging Model: `dim_fhv_tripdata.sql` and core model `fct_fhv_monthly_zone_traveltime_p90.sql` 
+Computes the timestamp difference in seconds between dropoff_datetime and pickup_datetime.
 
-Filters out invalid entries and computes **continuous percentile** of `fare_amount` partitioned by `service_type`, `year`, and `month`.
-
-Filtering conditions:
-
-* `fare_amount > 0`
-* `trip_distance > 0`
-* `payment_type_description` in ('Cash', 'Credit card')
-
+Compute the continous p90 of trip_duration partitioning by year, month, pickup_location_id, and dropoff_location_id
 ---
