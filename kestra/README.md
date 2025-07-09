@@ -1,4 +1,4 @@
-# NYC Taxi Data Project — Workflow Orchestration with Kestra
+# NYC Taxi Data — Workflow Orchestration with Kestra
 
 This project is part of the workflow orchestration module The goal is to extend existing data ingestion workflows to handle **NYC Yellow and Green Taxi datasets for the year 2021**, using **Kestra**, a modern open-source orchestration platform.
 
