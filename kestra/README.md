@@ -1,8 +1,8 @@
-# 🚖 NYC Taxi Data Project — Workflow Orchestration with Kestra
+# NYC Taxi Data Project — Workflow Orchestration with Kestra
 
 This project is part of the workflow orchestration module The goal is to extend existing data ingestion workflows to handle **NYC Yellow and Green Taxi datasets for the year 2021**, using **Kestra**, a modern open-source orchestration platform.
 
-## 📌 Project Description
+## Project Description
 
 We build and schedule ETL pipelines that:
 
@@ -15,7 +15,7 @@ The workflows are designed to be reusable, parameterized, and support both manua
 
 ---
 
-## 📦 Datasets Used
+## Datasets Used
 
 - **Green Taxi Trip Data**:  
   [GitHub Release — Green Taxi](https://github.com/DataTalksClub/nyc-tlc-data/releases/tag/green)  
@@ -29,7 +29,7 @@ and replace `green` with `yellow` when needed.
 
 ---
 
-## ⚙️ Technologies & Tools
+## Technologies & Tools
 
 - [Kestra](https://kestra.io/) — Workflow orchestration
 - Google Cloud Storage (GCS) — Cloud storage for Parquet files
