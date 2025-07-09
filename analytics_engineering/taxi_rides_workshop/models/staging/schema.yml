@@ -8,6 +8,8 @@ sources:
     tables:
       - name: green_tripdata
       - name: yellow_tripdata
+
+      - name: fhv_tripdata
 models:
   - name: stg_yellow_tripdata
     description: ""
@@ -15,7 +17,6 @@ models:
       - name: tripid
         data_type: string
         description: ""
-
 
       - name: vendorid
         data_type: int64
@@ -114,7 +115,6 @@ models:
           - not_null:
               severity: warn
 
-
       - name: vendorid
         data_type: int64
         description: ""
@@ -140,7 +140,6 @@ models:
               field: locationid
               to: ref('taxi_zone_lookup')
               severity: warn
-             
 
       - name: pickup_datetime
         data_type: timestamp
@@ -207,8 +206,39 @@ models:
               severity: warn
               quote: false
 
-
       - name: payment_type_description
         data_type: string
         description: ""
+  - name: stg_fhv_tripdata
+    description: ""
+    columns:
 
+      - name: dispatching_base_num
+        data_type: string
+        description: "The TLC Base License Number of the base that dispatched the trip"
+
+      - name: pickup_datetime
+        data_type: timestamp
+        description: ""
+      
+      - name: dropoff_datetime
+        data_type: timestamp
+        description: ""
+
+      - name: pickup_location_id
+        data_type: int64
+        description: "Location ID where the trip started"
+      
+      - name: dropoff_location_id
+        data_type: int64
+        description: "Location ID where the trip ended"
+
+      - name: sr_flag
+        data_type: int64
+        description: "Indicates if the trip was a part of a shared ride chain offered by a High Volume FHV company"
+
+      - name: affiliated_base_number
+        data_type: string
+        description: "Base number of the  base with which the vehicle is affiliated."
+
+        
