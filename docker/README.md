@@ -1,6 +1,40 @@
 # Docker, SQL, and Terraform
 
-----
+Objective: Gain hands-on experience with local development environments using Docker, perform basic data exploration with SQL, and provision cloud infrastructure using Terraform on Google Cloud Platform (GCP).
+
+### 🐳 Docker & PostgreSQL
+
+- Used the `python:3.12.8` Docker image to explore Docker fundamentals.
+- Configured a multi-service environment with `docker-compose` to run:
+  - **PostgreSQL** database
+  - **pgAdmin** for web-based database access and inspection
+- Downloaded and loaded the following datasets into PostgreSQL:
+  - Green Taxi Trip Data – October 2019
+  - Taxi Zone Lookup Table
+
+### 📊 Data Analysis (SQL)
+
+Performed analytical queries on the green taxi trip data to:
+
+- Count trips segmented by trip distance
+- Identify the longest trip per day
+- Determine top pickup zones by total fare amount
+- Find the drop-off location with the highest tip from a specific zone
+
+### ☁ Terraform & GCP
+
+- Installed and configured **Terraform** to manage infrastructure as code
+- Cloned and updated course-provided Terraform scripts to:
+  - Create a **Google Cloud Storage (GCS)** bucket
+  - Create a **BigQuery** dataset
+- Followed Terraform workflow: `terraform init`, `terraform apply`, `terraform destroy`
+
+## Datasets
+
+- [Green Taxi Trips – October 2019](https://github.com/DataTalksClub/nyc-tlc-data/releases/download/green/green_tripdata_2019-10.csv.gz)
+- [Taxi Zone Lookup Table](https://github.com/DataTalksClub/nyc-tlc-data/releases/download/misc/taxi_zone_lookup.csv)
+  
+# Homework Solutions
 
 ## Running docker with the python:3.12.8 image in an interactive mode, using the entrypoint bash.
 
