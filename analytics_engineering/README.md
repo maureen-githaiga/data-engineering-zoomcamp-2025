@@ -1,4 +1,4 @@
-# NYC Taxi DBT Project – Module 4 Homework
+# 🗽 NYC Taxi DBT Project – Module 4 Homework
 This mini-project/workshop focuses on transforming and analysing NYC Taxi data using **DBT** and **BigQuery**.
 ## 🚀 Project Summary
 
