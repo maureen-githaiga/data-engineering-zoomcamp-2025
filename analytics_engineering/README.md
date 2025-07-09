@@ -1,13 +1,13 @@
 # 🗽 NYC Taxi DBT Project – Module 4 Homework
 This mini-project/workshop focuses on transforming and analysing NYC Taxi data using **DBT** and **BigQuery**.
-## 🚀 Project Summary
+## Project Summary
 
 We process and model NYC Taxi trip data from 2019 and 2020, including:
 - Green Taxi
 - Yellow Taxi
 - For-Hire Vehicles (FHV)
 
-  ### 💡 Objective
+  ### Objective
 - Load raw data from REST API to GCS, then to BigQuery native tables  
 - Build **staging models** to clean and standardize schema  
 - Build **fact/dimension models** using **star schema**  
@@ -15,7 +15,7 @@ We process and model NYC Taxi trip data from 2019 and 2020, including:
 
   ---
 
-## 📂 Data Sources
+## Data Sources
 
 - Green Taxi: 7,778,101 records  
 - Yellow Taxi: 109,047,518 records  
@@ -29,7 +29,7 @@ Stored as BigQuery native tables.
 The following are answers to the homework questions:
 
 ### 1. `sources.yml` file
-## ⚙️ DBT Configuration
+## DBT Configuration
 
 ### sources.yml
 yaml
