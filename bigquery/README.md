@@ -1,10 +1,10 @@
-# 🗽 NYC Yellow Taxi Trip Records – 2024 BigQuery Project
+## 🗽 NYC Yellow Taxi Trip Records – 2024 BigQuery Module
 
 This mini-project/workshop objective is to work with **NYC Yellow Taxi Trip Records (Jan–June 2024)**, using **Google Cloud Storage** and **BigQuery** for data querying and optimization.
 
 ---
 
-## 🚀 Project Overview
+## Overview
 
 In this project, we:
 
@@ -16,12 +16,12 @@ In this project, we:
 
 ---
 
-## 📦 Data Source
+## Data Source
 
 **Yellow Taxi Trip Records**  
-🗓️ Date Range: **January 2024 to June 2024**  
-📁 Format: Parquet  
-🌐 Source: [NYC Taxi & Limousine Commission Trip Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
+🗓Date Range: **January 2024 to June 2024**  
+Format: Parquet  
+Source: [NYC Taxi & Limousine Commission Trip Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 ---
 
@@ -31,11 +31,11 @@ In this project, we:
 - BigQuery
 - SQL (standard)
 
-> ❗️ Note: No orchestration tool (Airflow, Prefect, etc.) was used to load data into BigQuery as per assignment instructions. Data was loaded up to GCS only.
+> Note: No orchestration tool (Airflow, Prefect, etc.) was used to load data into BigQuery as per assignment instructions. Data was loaded up to GCS only.
 
 ---
 
-## 🧪 BigQuery Setup
+## BigQuery Setup
 
 - ✅ **External Table**: Created using GCS-hosted Parquet files  
 - ✅ **Materialized Table**: Loaded directly from external table, unpartitioned  
@@ -43,7 +43,7 @@ In this project, we:
 
 ---
 
-## 📖 SQL Queries
+## SQL Queries
 
 All queries for the homework questions are included in this README under the `Homework Solutions` section below.
 
@@ -56,7 +56,7 @@ All queries for the homework questions are included in this README under the `Ho
 - BigQuery best practices
 
 
-## 🧾 Homework Solutions
+## Homework Solutions
 
 ### **Question 1: Count of the records for the 2024 Yellow Taxi Data**
 
@@ -64,9 +64,6 @@ All queries for the homework questions are included in this README under the `Ho
 SELECT COUNT(*) 
 FROM `zoomcamp.external_yellow_tripdata_2024`;
 ```
-
-✅ **Answer**: `20,332,093`
-
 ---
 
 ### **Question 2: Distinct PULocationIDs – External vs Materialized Table**
@@ -81,7 +78,7 @@ SELECT DISTINCT COUNT(PULocationID)
 FROM `zoomcamp.yellow_tripdata_2024_regular`;
 ```
 
-✅ **Estimated data read**:
+**Estimated data read**:
 
 * External Table: **0 MB**
 * Materialized Table: **155.12 MB**
@@ -100,7 +97,7 @@ SELECT PULocationID, DOLocationID
 FROM `zoomcamp.yellow_tripdata_2024_regular` LIMIT 5;
 ```
 
-✅ **Explanation**:
+**Explanation**:
 BigQuery is a **columnar database**. It only reads the columns requested. Querying more columns (e.g. both `PULocationID` and `DOLocationID`) increases the number of bytes read.
 
 ---
@@ -113,13 +110,11 @@ FROM `zoomcamp.external_yellow_tripdata_2024`
 WHERE fare_amount = 0;
 ```
 
-✅ **Answer**: `8,333`
-
 ---
 
 ### **Question 5: Optimizing Table with Partitioning & Clustering**
 
-✅ **Strategy**: Partition by `tpep_pickup_datetime`, Cluster by `VendorID`
+**Strategy**: Partition by `tpep_pickup_datetime`, Cluster by `VendorID`
 
 ```sql
 CREATE OR REPLACE TABLE `zoomcamp.yellow_tripdata_2024_partitioned_clustered`
@@ -145,7 +140,7 @@ FROM `zoomcamp.yellow_tripdata_2024_partitioned_clustered`
 WHERE DATE(tpep_pickup_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
 ```
 
-✅ **Estimated bytes processed**:
+**Estimated bytes processed**:
 
 * Materialized Table: **310.24 MB**
 * Optimized Table: **26.85 MB**
@@ -154,7 +149,7 @@ WHERE DATE(tpep_pickup_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
 
 ### **Question 7: Where is the data stored in the External Table?**
 
-✅ **Answer**: **GCS Bucket**
+**Answer**: **GCS Bucket**
 
 * External tables read directly from GCS.
 * They avoid data duplication and support querying on-demand.
@@ -164,7 +159,7 @@ WHERE DATE(tpep_pickup_datetime) BETWEEN '2024-03-01' AND '2024-03-15';
 
 ### **Question 8: Is it best practice to always cluster your data?**
 
-✅ **Answer**: **False**
+**Answer**: **False**
 
 Clustering is useful when:
 
@@ -182,7 +177,7 @@ Not useful when:
 
 ### **Question 9: Why does `SELECT COUNT(*)` show 0 bytes processed?**
 
-✅ BigQuery uses **metadata** for `COUNT(*)` queries on native tables, so no actual table scan occurs.
+BigQuery uses **metadata** for `COUNT(*)` queries on native tables, so no actual table scan occurs.
 
 ```sql
 SELECT COUNT(*)
