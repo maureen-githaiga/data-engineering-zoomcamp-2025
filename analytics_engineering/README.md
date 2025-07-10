@@ -8,7 +8,7 @@ We process and model NYC Taxi trip data from 2019 and 2020, including:
 - For-Hire Vehicles (FHV)
 
   ### Objective
-- Load raw data from REST API to GCS, then to BigQuery native tables  
+- Load raw data from URL to GCS, then to BigQuery native tables  
 - Build **staging models** to clean and standardize schema  
 - Build **fact/dimension models** using **star schema**  
 - Perform analytical tasks such as revenue analysis, trip duration percentiles, and quarterly comparisons
