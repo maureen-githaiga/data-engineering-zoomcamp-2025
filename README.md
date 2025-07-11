@@ -2,9 +2,7 @@
 
 ![Data Engineering Workflow](https://github.com/DataTalksClub/data-engineering-zoomcamp/blob/main/images/architecture/arch_v4_workshops.jpg?raw=true)  
 Welcome to my learning journey through the [DataTalksClub Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp), a hands-on course covering the fundamentals of data engineering. 
-This repository includes my weekly progress, assignments, and select workshops as I build foundational skills in data engineering.
-
-
+This repository includes my workshops and mini projects, structured as weekly assignments per module.
 ---
 
 ## 📅 Weekly Breakdown
