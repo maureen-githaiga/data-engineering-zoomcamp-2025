@@ -26,13 +26,13 @@ This repository includes my workshops and mini projects, structured as weekly as
 - Wrote analytical queries in **SQL**
 - **Tools**: BigQuery, SQL
 
-### 🔄 Week 4 – Analytics Engineering 
+### ✅ Week 4 – Analytics Engineering 
 - Learning **dbt (data build tool)** for analytics engineering
 - Building modular, testable data transformation pipelines
 - Designing DAGs for end-to-end data workflows
 - **Tools**: dbt, Jinja, BigQuery, Looker Studio
 
-### ⏳ Week 5 – Batch Processing *(In Progress)*
+### 🔄 Week 5 – Batch Processing *(In Progress)*
 - Learn distributed data processing using **Apache Spark**
 - Explore data transformations at scale
 
