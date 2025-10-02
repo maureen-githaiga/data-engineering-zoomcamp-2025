@@ -32,7 +32,7 @@ This repository includes my workshops and mini projects, structured as weekly as
 - Designing DAGs for end-to-end data workflows
 - **Tools**: dbt, Jinja, BigQuery, Looker Studio
 
-### 🔄 Week 5 – Batch Processing *(In Progress)*
+### 🔄 Week 5 – Batch Processing *(On hold)*
 - Learn distributed data processing using **Apache Spark**
 - Explore data transformations at scale
 
@@ -40,9 +40,9 @@ This repository includes my workshops and mini projects, structured as weekly as
 - Implement real-time data pipelines with **Kafka**
 - Explore event-driven architectures
 
-### ⏳ Final Project – Capstone
-- Combine all the tools and concepts into a real-world end-to-end data pipeline
-
+### ✅  Final Project – Capstone
+- [Kenya News Data Pipeline](https://github.com/maureen-githaiga/kenya-news-data-pipeline)  
+- A second project (with Spark or Kafka for streaming) will be added later.
 ---
 
 ## 🛠️ Skills & Tools
